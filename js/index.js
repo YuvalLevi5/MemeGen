@@ -1,7 +1,6 @@
 'use strict'
 
 let gCurrImg
-let gIsClicked = false
 const pages = ['gallery', 'editor']
 const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
 

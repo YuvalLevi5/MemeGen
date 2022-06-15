@@ -15,22 +15,13 @@
     display: none;
 }
 
-@media (min-width: 594px) {
-    footer>div .logo {
-        height: 40px;
-    }
-    .text-edit {
-        gap: 15px;
-    }
-    .lines-edit {
-        width: 170px;
-    }
-    .edit-panel {
-        width: unset;
-    }
+@media (min-width: 600px) {
     .canvas-container {
         width: 400px;
         height: 400px;
+    }
+    .edit-panel {
+        width: unset;
     }
 }
 
@@ -54,21 +45,10 @@
     }
     .logo {
         margin-inline-start: 50px;
-        height: 2rem;
         cursor: pointer;
     }
     .screen {
         display: none;
-    }
-    .btn {
-        height: 2.5rem;
-        font-family: poppins;
-        border: none;
-        border-bottom: unset;
-        background-color: unset;
-        color: rgb(241, 241, 241);
-        font-size: 1.1rem;
-        border-radius: 50px;
     }
 }
 
@@ -85,19 +65,5 @@
 @media (min-width: 1200px) {
     .imgs-container {
         padding-top: 0;
-    }
-    .filter {
-        flex-direction: row;
-        margin-top: unset;
-    }
-    .search-bar {
-        margin-inline-start: 50px;
-        height: 40%;
-        width: 40%;
-    }
-    .categories {
-        margin-inline-end: 50px;
-        height: 40%;
-        width: 40%;
     }
 }

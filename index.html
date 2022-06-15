@@ -33,11 +33,6 @@
         </div>
         <div class="edit-panel">
             <input class="text-content-edit" type="text" placeholder="Enter text here" oninput="onSetText(this.value)" />
-            <div class="lines-edit">
-                <button onclick="onSwitchLine()" class="btn-edit switch-line">
-            <i class="fa fa-solid fa-arrows-up-down"></i>
-           </button>
-            </div>
             <div class="text-edit">
                 <button class="btn-edit" onclick="onChangeTextSize(5)">
             <i class="fa fa-solid fa-arrow-up-a-z"></i>
@@ -46,19 +41,11 @@
             <i class="fa fa-solid fa-arrow-down-a-z"></i>
           </button>
                 <input class="fa fa-solid fa-paintbrush btn-edit clr" onchange="onChangeStrokeColor(this.value)" type="color" name="stroke-color" />
-                <input class="fa fa-solid fa-palette btn-edit clr" id="fill-color" onchange="onChangeFillColor(this.value)" type="color" name="fill-color" />
+                <input class="fa fa-solid fa-fill-drip btn-edit clr" id="fill-color" onchange="onChangeFillColor(this.value)" type="color" name="fill-color" />
             </div>
         </div>
-
     </section>
     <div onclick="onToggleMenu()" class="screen"></div>
-
-    <footer>
-        <div class="footer-container">
-            <img class="logo" src="images/LOGO.png" alt="">
-            <div class="footer-txt">Copyright&copy 2022</div>
-        </div>
-    </footer>
 
 
 

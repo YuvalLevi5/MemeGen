@@ -1,7 +1,5 @@
 'use strict'
 
-let gFilterBy
-
 let gImgs = [{
         id: 1,
         url: `images/1.jpg`,
@@ -94,53 +92,6 @@ let gImgs = [{
     },
 ]
 
-function getSelectedImg() {
-
-}
-
 function getImages() {
-    // if (gFilterBy) {
-    //     let filteredImgs = []
-    //     gImgs.forEach((image) => {
-    //         return image.keywords.filter((keyword) => {
-    //             if (keyword.includes(gFilterBy)) {
-    //                 return filteredImgs.push(image)
-    //             }
-    //         })
-    //     })
-    //     return filteredImgs
-    // }
     return gImgs
 }
-
-// let gKeywordSearchCountMap = {
-//     funny: 12,
-//     cute: 7,
-//     celebrity: 9,
-//     animal: 6,
-//     men: 4,
-//     kids: 10,
-// }
-
-// function setFilterImgs(val) {
-//     gFilterBy = val === 'all' ? '' : val.toLowerCase()
-// }
-
-// function loadImageFromInput(ev, onImageReady) {
-//     let reader = new FileReader()
-
-//     reader.onload = (event) => {
-//         let img = new Image()
-//         img.onload = onImageReady.bind(null, img)
-//         img.src = event.target.result
-//         gCurrImg = img
-//     }
-//     reader.readAsDataURL(ev.target.files[0])
-// }
-
-// function getKeywords() {
-//     return gKeywordSearchCountMap
-// }
-
-// function sizeUpKeyword(word) {
-//     gKeywordSearchCountMap[word]++

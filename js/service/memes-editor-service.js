@@ -4,32 +4,18 @@ let gMeme = {
     selectedImgId: 1,
     selectedLineIdx: 0,
     lines: [{
-            pos: {
-                x: 0,
-                y: 0,
-            },
-            txt: 'Up Line',
-            size: 40,
-            align: 'center',
-            fillColor: 'white',
-            strokeColor: 'black',
-            isSelected: true,
-            fontfamily: 'impact',
+        pos: {
+            x: 0,
+            y: 0,
         },
-        {
-            pos: {
-                x: 0,
-                y: 0,
-            },
-            txt: 'Down line',
-            size: 40,
-            align: 'center',
-            fillColor: 'white',
-            strokeColor: 'black',
-            isSelected: false,
-            fontfamily: 'impact',
-        },
-    ],
+        txt: 'Up Line',
+        size: 40,
+        align: 'center',
+        fillColor: 'white',
+        strokeColor: 'black',
+        isSelected: true,
+        fontfamily: 'impact',
+    }],
 }
 
 function getGMeme() {
@@ -46,20 +32,11 @@ function getSelectedImg() {
 }
 
 function setSelectedLine(idx) {
-    resetSelectedLine()
     gMeme.lines[idx].isSelected = true
     gMeme.selectedLineIdx = idx
 }
 
-function resetSelectedLine() {
-    gMeme.lines.forEach((_, idx) => {
-        gMeme.lines[idx].isSelected = false
-    })
-    gMeme.selectedLineIdx = -1
-}
-
 function makeLine(line) {
-    gCtx.textBaseline = 'middle'
     gCtx.textAlign = line.align
     gCtx.strokeStyle = line.strokeColor
     gCtx.fillStyle = line.fillColor
