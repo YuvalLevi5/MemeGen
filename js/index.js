@@ -13,7 +13,7 @@ function init() {
 function renderGallery() {
     const images = getImages()
     let imgHTML = images.map((img) => {
-        return `<img onclick="onSelectImage(${img.id})" class="gallery-image" src="./images/${img.url}.jpg">`
+        return `<img onclick="onSelectImage(${img.id})" class="gallery-image" src="./images/${img.id}.jpg">`
     })
     const elContainer = document.querySelector('.imgs-container')
     elContainer.innerHTML = imgHTML.join('')
