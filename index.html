@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/index.css">
+    <script src="https://kit.fontawesome.com/f71a3c6bc9.js" crossorigin="anonymous"></script>
+
+
+    <title>Memes Generator</title>
+</head>
+
+<body onload="init()">
+    <header class="header-container">
+        <img onclick="moveToPage('gallery')" class="logo" src="images/LOGO.png" alt="" />
+        <button onclick="onToggleMenu()" class="menu-btn">☰</button>
+        <nav class="navbar">
+            <button onclick="moveToPage('gallery')" class="btn gallery-btn">Gallery</button>
+            <button onclick="moveToPage('saved')" class="btn saved-btn">Saved</button>
+            <button onclick="moveToPage('about')" class="btn about-btn">About</button>
+        </nav>
+    </header>
+
+    <main class="gallery">
+        <div class="imgs-container"></div>
+    </main>
+
+    <section class="editor hidden">
+        <div class="canvas-container">
+            <canvas id="meme-canvas"></canvas>
+        </div>
+        <div class="edit-panel">
+            <input class="text-content-edit" type="text" placeholder="Enter text here" oninput="onSetText(this.value)" />
+            <div class="lines-edit">
+                <button onclick="onSwitchLine()" class="btn-edit switch-line">
+            <i class="fa fa-solid fa-arrows-up-down"></i>
+           </button>
+            </div>
+            <div class="text-edit">
+                <button class="btn-edit" onclick="onChangeTextSize(5)">
+            <i class="fa fa-solid fa-arrow-up-a-z"></i>
+          </button>
+                <button class="btn-edit" onclick="onChangeTextSize(-5)">
+            <i class="fa fa-solid fa-arrow-down-a-z"></i>
+          </button>
+                <input class="fa fa-solid fa-paintbrush btn-edit clr" onchange="onChangeStrokeColor(this.value)" type="color" name="stroke-color" />
+                <input class="fa fa-solid fa-palette btn-edit clr" id="fill-color" onchange="onChangeFillColor(this.value)" type="color" name="fill-color" />
+            </div>
+        </div>
+
+    </section>
+    <div onclick="onToggleMenu()" class="screen"></div>
+
+    <footer>
+        <div class="footer-container">
+            <img class="logo" src="images/LOGO.png" alt="">
+            <div class="footer-txt">Copyright&copy 2022</div>
+        </div>
+    </footer>
+
+
+
+
+    <script src="js/service/index-service.js"></script>
+    <script src="js/service/canvas-service.js"></script>
+    <script src="js/service/memes-editor-service.js"></script>
+
+    <script src="js/index.js"></script>
+    <script src="js/memes-editor.js"></script>
+
+</body>
+
+</html>
