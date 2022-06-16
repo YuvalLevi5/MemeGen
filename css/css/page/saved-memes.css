@@ -1,0 +1,17 @@
+.saved {
+    text-align: center;
+    min-height: 77.5vh;
+}
+
+.saved-header {
+    display: flex;
+    height: 120px;
+    justify-content: center;
+    color: rgb(221, 221, 221);
+    font-size: 1.7rem;
+}
+
+
+/* .saved-img-container {
+    position: relative;
+} */

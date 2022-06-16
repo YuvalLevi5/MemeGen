@@ -18,7 +18,7 @@
         <button onclick="onToggleMenu()" class="menu-btn">☰</button>
         <nav class="navbar">
             <button onclick="moveToPage('gallery')" class="btn gallery-btn">Gallery</button>
-            <button onclick="moveToPage('saved')" class="btn saved-btn">Saved</button>
+            <button onclick="moveToPage('saved'); renderSavedMemes()" class="btn saved-btn">Saved</button>
             <button onclick="moveToPage('about')" class="btn about-btn">About</button>
         </nav>
     </header>
@@ -36,6 +36,12 @@
             <div class="lines-edit">
                 <button title="Switch line" class="btn-edit" onclick="onChangeLine()">
                         <i class="fa fa-solid fa-arrows-up-down"></i>
+                    </button>
+                <button title="Switch line" class="btn-edit" onclick="onAddLine()">
+                    <i class="fa fa-solid fa-plus"></i>
+                    </button>
+                <button onclick="onDeleteLine()" class="btn-edit delete-line">
+                        <i class="fa fa-light fa-trash-can"></i>
                     </button>
                 <button class="btn-edit" onclick="onChangeLinePos(-5)">
                         <i class="fa-solid fa-arrow-up"></i>
@@ -72,6 +78,21 @@
             <button class="download-btn"><a href="#" onclick="onDownload(this)" download="My-Meme.jpg"><i class="fa-solid fa-download"></i> Download</a></button></div>
     </section>
     <div onclick="onToggleMenu()" class="screen"></div>
+
+    <section class="saved gallery hidden">
+        <div class="saved-header">
+            <h1>Saved Memes</h1>
+        </div>
+        <div class="imgs-container"></div>
+    </section>
+
+
+    <footer>
+        <div class="footer-container">
+            <img class="logo" src="images/LOGO.png" alt="">
+            <div class="footer-txt">Yuval Vaknin Levi &copy 2022</div>
+        </div>
+    </footer>
 
 
 

@@ -1,7 +1,7 @@
 'use strict'
 
 let gCurrImg
-const pages = ['gallery', 'editor']
+const pages = ['gallery', 'editor', 'saved']
 const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
 
 function init() {

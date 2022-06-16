@@ -2,7 +2,9 @@
 let gElCanvas
 let gCtx
 
+
 function initMeme(img) {
+    cleanGMeme()
     setSelectedLine(0)
     createCanvas()
     resizeCanvas()
@@ -53,6 +55,17 @@ function initLinePositions() {
 
 function onChangeLine() {
     updateSelectedLine()
+    renderMeme(gCurrImg)
+}
+
+function onAddLine() {
+    createAndPushLine()
+    renderMeme(gCurrImg)
+}
+
+
+function onDeleteLine() {
+    deleteLine()
     renderMeme(gCurrImg)
 }
 

@@ -1,5 +1,6 @@
 'use strict'
 
+
 function setLineText(text) {
     gMeme.lines[gMeme.selectedLineIdx].txt = text
     markLine(gMeme.lines[gMeme.selectedLineIdx])
@@ -16,11 +17,32 @@ function updateSelectedLine() {
     gMeme.lines[gMeme.selectedLineIdx].isSelected = true
 }
 
+function createAndPushLine() {
+    var newLine = {
+        pos: {
+            x: gElCanvas.width / 2,
+            y: gElCanvas.height / 2,
+        },
+        txt: 'New Line',
+        size: 40,
+        align: 'center',
+        fillColor: 'white',
+        strokeColor: 'black',
+        isSelected: true,
+        fontfamily: 'impact',
+    }
+    gMeme.lines.push(newLine)
+}
+
+function deleteLine() {
+    gMeme.lines.splice(gMeme.selectedLineIdx, 1)
+    gMeme.selectedLineIdx = 0
+}
+
 function setTextSize(val) {
     if (gMeme.lines[gMeme.selectedLineIdx].size === 10 && val < 0) return
     gMeme.lines[gMeme.selectedLineIdx].size = gMeme.lines[gMeme.selectedLineIdx].size + val
 }
-// markLine(gMeme.lines[gMeme.selectedLineIdx])
 
 function setStrokeColor(val) {
     gMeme.lines[gMeme.selectedLineIdx].strokeColor = val

@@ -1,5 +1,10 @@
 'use strict'
 
+
+function getMemes() {
+    return gSavedMemes
+}
+
 let gMeme = {
     selectedImgId: 1,
     selectedLineIdx: 0,
@@ -34,6 +39,41 @@ let gMeme = {
 
 function getGMeme() {
     return gMeme
+}
+
+function cleanGMeme() {
+
+    return gMeme = {
+        selectedImgId: 1,
+        selectedLineIdx: 0,
+        lines: [{
+                pos: {
+                    x: 0,
+                    y: 0,
+                },
+                txt: 'Up Line',
+                size: 40,
+                align: 'center',
+                fillColor: 'white',
+                strokeColor: 'black',
+                isSelected: true,
+                fontfamily: 'impact',
+            },
+            {
+                pos: {
+                    x: 0,
+                    y: 0,
+                },
+                txt: 'Down Line',
+                size: 40,
+                align: 'center',
+                fillColor: 'white',
+                strokeColor: 'black',
+                isSelected: false,
+                fontfamily: 'impact',
+            }
+        ],
+    }
 }
 
 function setSelectedImg(id) {
