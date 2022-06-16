@@ -1,7 +1,6 @@
 'use strict'
 let gElCanvas
 let gCtx
-let gStartPos
 
 function initMeme(img) {
     setSelectedLine(0)
@@ -9,7 +8,15 @@ function initMeme(img) {
     resizeCanvas()
     initLinePositions()
 
+    addListeners()
     renderMeme(img)
+}
+
+function addListeners() {
+    window.addEventListener('resize', () => {
+        resizeCanvas()
+        renderMeme(gCurrImg)
+    })
 }
 
 function createCanvas() {
@@ -22,6 +29,7 @@ function renderMeme(img) {
     const memeObj = getGMeme()
     const lines = memeObj.lines
     lines.forEach((line) => makeLine(line))
+    markLine(memeObj.lines[memeObj.selectedLineIdx])
 }
 
 
@@ -37,6 +45,15 @@ function initLinePositions() {
         x: gElCanvas.width / 2,
         y: 50,
     }
+    meme.lines[1].pos = {
+        x: gElCanvas.width / 2,
+        y: gElCanvas.height - 50,
+    }
+}
+
+function onChangeLine() {
+    updateSelectedLine()
+    renderMeme(gCurrImg)
 }
 
 function onSetText(txt) {
@@ -57,4 +74,26 @@ function onChangeStrokeColor(val) {
 function onChangeFillColor(val) {
     setFillColor(val)
     renderMeme(gCurrImg)
+}
+
+function onChangeLinePos(val) {
+    setPos(val)
+    renderMeme(gCurrImg)
+}
+
+function onChangeTextAlignment(val) {
+    setAlignment(val)
+    renderMeme(gCurrImg)
+}
+
+function onChangeTextFont(val) {
+    setFont(val)
+    renderMeme(gCurrImg)
+}
+
+function onDownload(ellink) {
+    resetSelectedLine()
+    renderMeme(gCurrImg)
+    downloadMeme(ellink)
+    moveToPage('gallery')
 }

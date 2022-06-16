@@ -71,6 +71,12 @@
     transition: background-color 0.3s, box-shadow 0.3s, color 0.3s;
 }
 
+.btn:active {
+    background-color: white;
+    color: rgb(44 181 108);
+    transition: background-color 0.3s, color 0.3s;
+}
+
 .logo {
     margin-inline-start: 10px;
     height: 2rem;

@@ -33,17 +33,43 @@
         </div>
         <div class="edit-panel">
             <input class="text-content-edit" type="text" placeholder="Enter text here" oninput="onSetText(this.value)" />
+            <div class="lines-edit">
+                <button title="Switch line" class="btn-edit" onclick="onChangeLine()">
+                        <i class="fa fa-solid fa-arrows-up-down"></i>
+                    </button>
+                <button class="btn-edit" onclick="onChangeLinePos(-5)">
+                        <i class="fa-solid fa-arrow-up"></i>
+                    </button>
+                <button class="btn-edit" onclick="onChangeLinePos(5)">
+                        <i class="fa-solid fa-arrow-down"></i>
+                    </button>
+            </div>
             <div class="text-edit">
                 <button class="btn-edit" onclick="onChangeTextSize(5)">
-            <i class="fa fa-solid fa-arrow-up-a-z"></i>
-          </button>
+                    <i class="fa fa-solid fa-arrow-up-a-z"></i>
+                </button>
                 <button class="btn-edit" onclick="onChangeTextSize(-5)">
-            <i class="fa fa-solid fa-arrow-down-a-z"></i>
-          </button>
-                <input class="fa fa-solid fa-paintbrush btn-edit clr" onchange="onChangeStrokeColor(this.value)" type="color" name="stroke-color" />
-                <input class="fa fa-solid fa-fill-drip btn-edit clr" id="fill-color" onchange="onChangeFillColor(this.value)" type="color" name="fill-color" />
+                    <i class="fa fa-solid fa-arrow-down-a-z"></i>
+                </button>
+                <button class="btn-edit" onclick="onChangeTextAlignment('end')">
+                    <i class="fa fa-solid fa-align-left"></i>
+                </button>
+                <button class="btn-edit" onclick="onChangeTextAlignment('center')">
+                    <i class="fa fa-solid fa-align-center"></i>
+                    </button">
+                    <button class="btn-edit" onclick="onChangeTextAlignment('start')">
+                        <i class="fa fa-solid fa-align-right"></i>
+                    </button>
+
+                <select class="font-select" onchange="onChangeTextFont(this.value)" name="font">
+                        <option value="Impact">Impact</option>
+                        <option value="Roboto">Georgia</option>
+                        <option value="Helvetica">fantasy</option>
+                    </select>
+                <input title="Change text border color" class="btn-edit" onchange="onChangeStrokeColor(this.value)" type="color" name="stroke-color" />
+                <input title="Change text color" class="btn-edit" id="fill-color" onchange="onChangeFillColor(this.value)" type="color" name="fill-color" />
             </div>
-        </div>
+            <button class="download-btn"><a href="#" onclick="onDownload(this)" download="My-Meme.jpg"><i class="fa-solid fa-download"></i> Download</a></button></div>
     </section>
     <div onclick="onToggleMenu()" class="screen"></div>
 
