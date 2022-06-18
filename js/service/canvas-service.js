@@ -17,13 +17,13 @@ function updateSelectedLine() {
     gMeme.lines[gMeme.selectedLineIdx].isSelected = true
 }
 
-function createAndPushLine() {
+function createAndPushLine(txt = 'New Line') {
     var newLine = {
         pos: {
             x: gElCanvas.width / 2,
             y: gElCanvas.height / 2,
         },
-        txt: 'New Line',
+        txt,
         size: 40,
         align: 'center',
         fillColor: 'white',
@@ -58,6 +58,7 @@ function setPos(val) {
 
 function setAlignment(val) {
     gMeme.lines[gMeme.selectedLineIdx].align = val
+    markLine(gMeme.lines[gMeme.selectedLineIdx])
 }
 
 function setFont(val) {

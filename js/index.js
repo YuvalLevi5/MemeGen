@@ -1,8 +1,7 @@
 'use strict'
 
 let gCurrImg
-const pages = ['gallery', 'editor', 'saved']
-const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
+const pages = ['gallery', 'editor', 'saved', 'about']
 
 function init() {
     renderGallery()
@@ -40,4 +39,14 @@ function moveToPage(targetPage) {
 function onToggleMenu() {
     document.querySelector('.screen').classList.toggle('open-menu')
     document.querySelector('.navbar').classList.toggle('open-menu')
+}
+
+function onFilterImgs(val) {
+    setFilterImgs(val)
+    renderGallery()
+}
+
+function onFlexible() {
+    var num = rand(1, 19)
+    onSelectImage(num)
 }

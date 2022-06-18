@@ -18,12 +18,28 @@
         <button onclick="onToggleMenu()" class="menu-btn">☰</button>
         <nav class="navbar">
             <button onclick="moveToPage('gallery')" class="btn gallery-btn">Gallery</button>
-            <button onclick="moveToPage('saved'); renderSavedMemes()" class="btn saved-btn">Saved</button>
+            <button onclick="moveToPage('saved'); renderSaved()" class="btn saved-btn">Saved</button>
             <button onclick="moveToPage('about')" class="btn about-btn">About</button>
         </nav>
     </header>
 
     <main class="gallery">
+        <div class="filter">
+            <div class="search-bar">
+                <input class="search-bar-input" type="text" list="searchKeywords" oninput="onFilterImgs(this.value)" placeholder="Search">
+                <datalist id="searchKeywords">
+                    <select name="searchKeywords" id="">
+                        <option value="funny"></option>
+                        <option value="cute"></option>
+                        <option value="celebrity"></option>
+                        <option value="animal"></option>
+                        <option value="kids"></option>
+                        <option value="men"></option>
+                    </select>
+                </datalist>
+            </div>
+            <div><button class="flex-btn" onclick="onFlexible()">Im flexible</button></div>
+        </div>
         <div class="imgs-container"></div>
     </main>
 
@@ -72,10 +88,16 @@
                         <option value="Roboto">Georgia</option>
                         <option value="Helvetica">fantasy</option>
                     </select>
+
                 <input title="Change text border color" class="btn-edit" onchange="onChangeStrokeColor(this.value)" type="color" name="stroke-color" />
                 <input title="Change text color" class="btn-edit" id="fill-color" onchange="onChangeFillColor(this.value)" type="color" name="fill-color" />
             </div>
-            <button class="download-btn"><a href="#" onclick="onDownload(this)" download="My-Meme.jpg"><i class="fa-solid fa-download"></i> Download</a></button></div>
+            <div class="emojis-container"></div>
+            <div class="sd-btns-container">
+                <button class="sd-btn save-btn" onclick="onSave()"><i class="fa fa-solid fa-box-archive"></i>
+                    Save</button>
+                <button class="download-btn"><a href="#" onclick="onDownload(this)" download="My-Meme.jpg"><i class="fa-solid fa-download"></i> Download</a></button></div>
+        </div>
     </section>
     <div onclick="onToggleMenu()" class="screen"></div>
 
@@ -84,6 +106,12 @@
             <h1>Saved Memes</h1>
         </div>
         <div class="imgs-container"></div>
+    </section>
+
+    <section class="about hidden">
+        <div class="about-info">
+            My name is Yuval Vaknin Levi. <br> Im 21 y/o and i live in Haifa, Israel. <br> Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus incidunt molestiae ipsum vitae dolor, beatae eveniet magni at dignissimos labore.
+        </div>
     </section>
 
 
@@ -97,12 +125,14 @@
 
 
 
+    <script src="js/service/storage-service.js"></script>
     <script src="js/service/index-service.js"></script>
     <script src="js/service/canvas-service.js"></script>
     <script src="js/service/memes-editor-service.js"></script>
 
     <script src="js/index.js"></script>
     <script src="js/memes-editor.js"></script>
+    <script src="js/saved-memes.js"></script>
 
 </body>
 

@@ -1,6 +1,12 @@
 'use strict'
 let gElCanvas
 let gCtx
+let gIsClicked = false
+let gStartPos
+
+const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
+
+
 
 
 function initMeme(img) {
@@ -9,16 +15,41 @@ function initMeme(img) {
     createCanvas()
     resizeCanvas()
     initLinePositions()
+    renderEmojis()
 
     addListeners()
     renderMeme(img)
 }
 
 function addListeners() {
+    addMouseListeners()
+    addTouchListeners()
+
+
     window.addEventListener('resize', () => {
         resizeCanvas()
         renderMeme(gCurrImg)
     })
+}
+
+function addMouseListeners() {
+    gElCanvas.addEventListener('mousemove', onMove)
+    gElCanvas.addEventListener('mousedown', onDown)
+    gElCanvas.addEventListener('mouseup', onUp)
+}
+
+function addTouchListeners() {
+    gElCanvas.addEventListener('touchmove', onMove)
+    gElCanvas.addEventListener('touchstart', onDown)
+    gElCanvas.addEventListener('touchend', onUp)
+}
+
+function renderEmojis() {
+    const emojis = getEmojis()
+    const emojisHTML = emojis.map((emoji) => {
+        return `<button class="sticker" onclick="onChooseSticker('${emoji}')">${emoji}</button>`
+    })
+    document.querySelector('.emojis-container').innerHTML = emojisHTML.join('')
 }
 
 function createCanvas() {
@@ -109,4 +140,14 @@ function onDownload(ellink) {
     renderMeme(gCurrImg)
     downloadMeme(ellink)
     moveToPage('gallery')
+}
+
+
+
+function onSave() {
+    resetSelectedLine()
+    renderMeme(gCurrImg)
+    saveMeme()
+    renderSaved()
+    moveToPage('saved')
 }

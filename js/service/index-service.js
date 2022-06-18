@@ -91,7 +91,30 @@ let gImgs = [{
         keywords: ['funny', 'men', 'celebrity'],
     },
 ]
+let gFilterBy
+
 
 function getImages() {
+    if (gFilterBy) {
+        let filteredImgs = []
+        gImgs.forEach((image) => {
+            return image.keywords.filter((keyword) => {
+                if (keyword.includes(gFilterBy)) {
+                    return filteredImgs.push(image)
+                }
+            })
+        })
+        return filteredImgs
+    }
     return gImgs
+}
+
+function setFilterImgs(val) {
+    gFilterBy = val === '' ? '' : val.toLowerCase()
+}
+
+function rand(min, max) {
+    min = Math.ceil(min)
+    max = Math.floor(max)
+    return Math.floor(Math.random() * (max - min) + min)
 }
