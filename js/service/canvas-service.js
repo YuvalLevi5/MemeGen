@@ -14,10 +14,16 @@ function updateSelectedLine() {
         gMeme.lines[gMeme.selectedLineIdx].isSelected = false
         gMeme.selectedLineIdx++
     }
+    if (gMeme.lines[gMeme.selectedLineIdx].txt === 'Up Line' || gMeme.lines[gMeme.selectedLineIdx].txt === 'Down Line') {
+        document.querySelector('.text-content-edit').value = ''
+    } else {
+        document.querySelector('.text-content-edit').value = gMeme.lines[gMeme.selectedLineIdx].txt
+    }
+    document.querySelector('.text-content-edit').placeholder = gMeme.lines[gMeme.selectedLineIdx].txt
     gMeme.lines[gMeme.selectedLineIdx].isSelected = true
 }
 
-function createAndPushLine(txt = 'New Line') {
+function addLine(txt = 'New Line') {
     var newLine = {
         pos: {
             x: gElCanvas.width / 2,
@@ -40,7 +46,7 @@ function deleteLine() {
 }
 
 function setTextSize(val) {
-    if (gMeme.lines[gMeme.selectedLineIdx].size === 10 && val < 0) return
+    if (gMeme.lines[gMeme.selectedLineIdx].size === 20 && val < 0 || gMeme.lines[gMeme.selectedLineIdx].size === 60 && val > 0) return
     gMeme.lines[gMeme.selectedLineIdx].size = gMeme.lines[gMeme.selectedLineIdx].size + val
 }
 
@@ -63,4 +69,39 @@ function setAlignment(val) {
 
 function setFont(val) {
     gMeme.lines[gMeme.selectedLineIdx].fontfamily = val
+}
+
+function downloadMeme(elLink) {
+    const data = gElCanvas.toDataURL()
+    elLink.href = data
+}
+
+function uploadImg() {
+    const imgDataUrl = gElCanvas.toDataURL('image/jpeg')
+
+    // A function to be called if request succeeds
+    function onSuccess(uploadedImgUrl) {
+        // const encodedUploadedImgUrl = encodeURIComponent(uploadedImgUrl)
+        window.open(
+            `https://www.facebook.com/sharer/sharer.php?u=${uploadedImgUrl}&t=${uploadedImgUrl}`
+        )
+    }
+    doUploadImg(imgDataUrl, onSuccess)
+}
+
+function doUploadImg(imgDataUrl, onSuccess) {
+    const formData = new FormData()
+    formData.append('img', imgDataUrl)
+
+    fetch('//ca-upload.com/here/upload.php', {
+            method: 'POST',
+            body: formData,
+        })
+        .then((res) => res.text())
+        .then((url) => {
+            onSuccess(url)
+        })
+        .catch((err) => {
+            console.error(err)
+        })
 }

@@ -7,10 +7,12 @@ _loadMemesFromStorage()
 
 function renderSaved() {
     const savedMemes = getMemes()
+        // console.log('savedMemes: ', savedMemes)
     if (!savedMemes || savedMemes === null) {
         return
     }
     let strHTMLs = savedMemes.map((meme, idx) => {
+        // console.log('meme: ', meme)
         let img = new Image()
         img.src = meme.img
         return `
@@ -23,15 +25,24 @@ function renderSaved() {
 }
 
 function onSelectSaveMeme(idx) {
-    const currMeme = gMemes[idx]
+    const savedMemes = getMemes()
+    var currMeme = savedMemes[idx]
+    gMeme = currMeme
+    var currImg = getSelectedImg(currMeme.selectedImgId)
     const img = new Image()
-    img.src = currMeme.img
+    img.src = currImg.url
     img.onload = () => {
         gCurrImg = img
-        initMeme(img)
+        initMeme(img, currMeme.selectedImgId, false)
     }
     moveToPage('editor')
+}
 
+function saveMeme() {
+    gMeme.img = gElCanvas.toDataURL('image/jpeg')
+    gMemes.push(JSON.parse(JSON.stringify(gMeme)))
+
+    _saveMemesToStorage()
 }
 
 function getMemes() {
@@ -48,5 +59,4 @@ function _loadMemesFromStorage() {
 
 function _saveMemesToStorage() {
     saveToStorage(KEY, gMemes)
-
 }

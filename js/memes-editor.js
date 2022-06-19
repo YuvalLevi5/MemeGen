@@ -9,8 +9,13 @@ const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
 
 
 
-function initMeme(img) {
-    cleanGMeme()
+function initMeme(img, id, isFromGallery = true) {
+    if (isFromGallery) {
+        clean()
+        document.querySelector('.text-content-edit').value = ''
+        document.querySelector('.text-content-edit').placeholder = gMeme.lines[gMeme.selectedLineIdx].txt
+    }
+    setSelectedImg(id)
     setSelectedLine(0)
     createCanvas()
     resizeCanvas()
@@ -21,11 +26,18 @@ function initMeme(img) {
     renderMeme(img)
 }
 
+function renderMeme(img) {
+    gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
+    const memeObj = getGMeme()
+    const lines = memeObj.lines
+    lines.forEach((line) => makeLine(line))
+    markLine(memeObj.lines[memeObj.selectedLineIdx])
+
+}
+
 function addListeners() {
     addMouseListeners()
     addTouchListeners()
-
-
     window.addEventListener('resize', () => {
         resizeCanvas()
         renderMeme(gCurrImg)
@@ -52,19 +64,15 @@ function renderEmojis() {
     document.querySelector('.emojis-container').innerHTML = emojisHTML.join('')
 }
 
+function onChooseSticker(emoji) {
+    addLine(emoji)
+    renderMeme(gCurrImg)
+}
+
 function createCanvas() {
     gElCanvas = document.querySelector('#meme-canvas')
     gCtx = gElCanvas.getContext('2d')
 }
-
-function renderMeme(img) {
-    gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
-    const memeObj = getGMeme()
-    const lines = memeObj.lines
-    lines.forEach((line) => makeLine(line))
-    markLine(memeObj.lines[memeObj.selectedLineIdx])
-}
-
 
 function resizeCanvas() {
     const elContainer = document.querySelector('.canvas-container')
@@ -90,7 +98,7 @@ function onChangeLine() {
 }
 
 function onAddLine() {
-    createAndPushLine()
+    addLine()
     renderMeme(gCurrImg)
 }
 
@@ -150,4 +158,8 @@ function onSave() {
     saveMeme()
     renderSaved()
     moveToPage('saved')
+}
+
+function onShare(ellink) {
+    uploadImg(ellink)
 }

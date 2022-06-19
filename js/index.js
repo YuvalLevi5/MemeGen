@@ -7,7 +7,6 @@ function init() {
     renderGallery()
 }
 
-
 function renderGallery() {
     const images = getImages()
     let imgHTML = images.map((img) => {
@@ -18,13 +17,12 @@ function renderGallery() {
 }
 
 function onSelectImage(id) {
-    setSelectedImg(id)
-    const currImg = getSelectedImg()
+    const currImg = getSelectedImg(id)
     const img = new Image()
     img.src = currImg.url
     img.onload = () => {
         gCurrImg = img
-        initMeme(img)
+        initMeme(img, id)
     }
     moveToPage('editor')
 }

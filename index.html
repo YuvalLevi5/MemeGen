@@ -38,7 +38,7 @@
                     </select>
                 </datalist>
             </div>
-            <div><button class="flex-btn" onclick="onFlexible()">Im flexible</button></div>
+            <div><button class="flexible-btn" onclick="onFlexible()">Im flexible</button></div>
         </div>
         <div class="imgs-container"></div>
     </main>
@@ -94,9 +94,9 @@
             </div>
             <div class="emojis-container"></div>
             <div class="sd-btns-container">
-                <button class="sd-btn save-btn" onclick="onSave()"><i class="fa fa-solid fa-box-archive"></i>
-                    Save</button>
-                <button class="download-btn"><a href="#" onclick="onDownload(this)" download="My-Meme.jpg"><i class="fa-solid fa-download"></i> Download</a></button></div>
+                <button class="sd-btn share-btn" onclick="onShare(this)"><i class="fa-solid fa-share-nodes"></i> Share</button>
+                <button class="sd-btn save-btn" onclick="onSave()"><i class="fa fa-solid fa-box-archive"></i>Save</button>
+                <button class="sd-btn download-btn"><a href="#" onclick="onDownload(this)" download="My-Meme.jpg"><i class="fa-solid fa-download"></i> Download</a></button></div>
         </div>
     </section>
     <div onclick="onToggleMenu()" class="screen"></div>
@@ -125,6 +125,7 @@
 
 
 
+    <script src="js/service/utils.js"></script>
     <script src="js/service/storage-service.js"></script>
     <script src="js/service/index-service.js"></script>
     <script src="js/service/canvas-service.js"></script>

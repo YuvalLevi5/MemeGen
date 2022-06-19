@@ -1,9 +1,8 @@
 'use strict'
 let gEmojis = ['😂', '😍', '🙄', '😌']
 
-
-function getMemes() {
-    return gSavedMemes
+function getEmojis() {
+    return gEmojis
 }
 
 let gMeme = {
@@ -38,13 +37,8 @@ let gMeme = {
     ],
 }
 
-function getGMeme() {
-    return gMeme
-}
-
-function cleanGMeme() {
-
-    return gMeme = {
+function clean() {
+    gMeme = {
         selectedImgId: 1,
         selectedLineIdx: 0,
         lines: [{
@@ -75,21 +69,20 @@ function cleanGMeme() {
             }
         ],
     }
+
+}
+
+function getGMeme() {
+    return gMeme
 }
 
 function setSelectedImg(id) {
     gMeme.selectedImgId = id
 }
 
-function getSelectedImg() {
-    const imgs = getImages()
-    return imgs.find((img) => img.id === gMeme.selectedImgId)
-}
-
 function setSelectedLine(idx) {
     gMeme.lines[idx].isSelected = true
     gMeme.selectedLineIdx = idx
-
 }
 
 function makeLine(line) {
@@ -122,21 +115,6 @@ function resetSelectedLine() {
     gMeme.selectedLineIdx = -1
 }
 
-function downloadMeme(elLink) {
-    const data = gElCanvas.toDataURL()
-    elLink.href = data
-}
-
-
-
-function saveMeme() {
-    gMeme.img = gElCanvas.toDataURL('image/jpeg')
-    gMeme.selectedLineIdx = gMeme.selectedLineIdx
-    gMemes.push(JSON.parse(JSON.stringify(gMeme)))
-
-    _saveMemesToStorage()
-}
-
 function onDown(ev) {
     const pos = getEvPos(ev)
     const isClicked = isLineClicked(pos)
@@ -163,8 +141,6 @@ function onMove(ev) {
     renderMeme(gCurrImg)
     gStartPos = pos
 }
-
-
 
 function onUp() {
     gIsClicked = false
@@ -196,7 +172,7 @@ function getEvPos(ev) {
             x: ev.pageX - ev.target.offsetLeft,
             y: ev.pageY - ev.target.offsetTop,
         }
-        console.log('ev: ', ev)
+
     }
     return pos
 }
@@ -204,13 +180,4 @@ function getEvPos(ev) {
 function moveLine(diffX, diffY) {
     gMeme.lines[gMeme.selectedLineIdx].pos.x += diffX
     gMeme.lines[gMeme.selectedLineIdx].pos.y += diffY
-}
-
-function getEmojis() {
-    return gEmojis
-}
-
-function onChooseSticker(emoji) {
-    createAndPushLine(emoji)
-    renderMeme(gCurrImg)
 }

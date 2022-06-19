@@ -1,5 +1,6 @@
 'use strict'
 
+let gFilterBy
 let gImgs = [{
         id: 1,
         url: `images/1.jpg`,
@@ -91,8 +92,6 @@ let gImgs = [{
         keywords: ['funny', 'men', 'celebrity'],
     },
 ]
-let gFilterBy
-
 
 function getImages() {
     if (gFilterBy) {
@@ -113,8 +112,7 @@ function setFilterImgs(val) {
     gFilterBy = val === '' ? '' : val.toLowerCase()
 }
 
-function rand(min, max) {
-    min = Math.ceil(min)
-    max = Math.floor(max)
-    return Math.floor(Math.random() * (max - min) + min)
+function getSelectedImg(id) {
+    const imgs = getImages()
+    return imgs.find((img) => img.id === id)
 }
